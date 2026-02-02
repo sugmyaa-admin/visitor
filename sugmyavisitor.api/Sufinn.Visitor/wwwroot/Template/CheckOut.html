@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-Out Notification</title>
+    <style>
+        body {
+            background-color: #ece9e9;
+            margin-top: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container1 {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            width: 600px;
+            height: max-content;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container2 {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            width: 600px;
+            height: max-content;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .bg-container {
+            background: url('https://assets.onecompiler.app/42ruym93g/42ruyjmn7/gradient.png') no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 120px;
+            height: 120px;
+            display: block;
+            margin: 20px auto 10px;
+            border-radius:50%;
+        }
+
+        .container1 h2 {
+            text-align: center;
+            font-size: 22px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: rgba(34, 179, 120)
+        }
+
+        .details {
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .details p {
+                margin: 5px 0;
+            }
+
+                .details p strong {
+                    margin: 5px 0;
+                    color: rgba(34, 179, 120);
+                }
+
+        .footer {
+            font-size: 15px;
+            color: #888;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container1">
+            <div>
+                <div class="bg-container">
+                    <img src="https://sufinn.com/wp-content/uploads/2024/03/Sugmya-Logo-New.jpg" alt="Sugmya Finance Pvt Ltd" height="60px" style="display:block;">
+                </div>
+                <h2 style="color: rgba(34, 179, 120);">{VisitorName} just Checked Out.</h2>
+            </div>
+        </div>
+        <div class="container2">
+            <div class="image-container">
+                <img src='{userImage}'  alt="Profile Picture">
+        </div>
+
+                <div class="details">
+                    <p><strong>Check-In Time</strong> </p>
+                    <p>{CheckInTime}</p><br>
+                    <p><strong>Check-Out Time</strong></p>
+                    <p> {CheckOutTime}</p><br>
+                    <p><strong>Company</strong> </p>
+                    <p>Sugmya Finance private limited</p>
+
+                </div>
+                <div class="footer">
+                    PS: This is an automatically generated email. Please do not reply to this email.
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

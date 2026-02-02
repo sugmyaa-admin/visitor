@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sufinn.Visitor", "Sufinn.Visitor\Sufinn.Visitor.csproj", "{B981DD75-A786-4B4F-A1AC-016333220724}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sufinn.Visitor.Core", "Sufinn.Visitor.Core\Sufinn.Visitor.Core.csproj", "{0418D840-7A7F-45EC-BBA0-2D48F7AFD769}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sufinn.Visitor.Repository", "Sufinn.Visitor.Repository\Sufinn.Visitor.Repository.csproj", "{9EF69904-7EAD-4998-AD00-0C27644BCB0E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sufinn.Visitor.Services", "Sufinn.Visitor.Services\Sufinn.Visitor.Services.csproj", "{779267E6-21A7-4596-99F4-7EC718A83968}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B981DD75-A786-4B4F-A1AC-016333220724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B981DD75-A786-4B4F-A1AC-016333220724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B981DD75-A786-4B4F-A1AC-016333220724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B981DD75-A786-4B4F-A1AC-016333220724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0418D840-7A7F-45EC-BBA0-2D48F7AFD769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0418D840-7A7F-45EC-BBA0-2D48F7AFD769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0418D840-7A7F-45EC-BBA0-2D48F7AFD769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0418D840-7A7F-45EC-BBA0-2D48F7AFD769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EF69904-7EAD-4998-AD00-0C27644BCB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EF69904-7EAD-4998-AD00-0C27644BCB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EF69904-7EAD-4998-AD00-0C27644BCB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EF69904-7EAD-4998-AD00-0C27644BCB0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779267E6-21A7-4596-99F4-7EC718A83968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779267E6-21A7-4596-99F4-7EC718A83968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779267E6-21A7-4596-99F4-7EC718A83968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779267E6-21A7-4596-99F4-7EC718A83968}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D8FD71A-297E-4707-89C0-E846E0741711}
+	EndGlobalSection
+EndGlobal

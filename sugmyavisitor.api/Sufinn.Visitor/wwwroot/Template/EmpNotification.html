@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugmya Finance - Employee Notification</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f6f8;
+            margin: 0;
+            padding: 0;
+            color: #444;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 650px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .email-header {
+            font-size: 26px;
+            font-weight: 600;
+            color: #3E7B9C;
+            margin-bottom: 20px;
+        }
+
+        .email-message {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #3E7B9C;
+            font-weight: 600;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #777;
+            margin-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+        }
+
+            .footer p {
+                margin: 5px 0;
+            }
+
+            .footer a {
+                color: #3E7B9C;
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        .email-footer {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header"> Message From {employeeName} </div>
+        <!-- Message content will be injected here -->
+        <p class="email-message">
+            <strong>Hello,</strong><br>
+            <br>
+            We have a message regarding the visitor status. The following action is requested: <br>
+            <span class="highlight">{message}</span>
+        </p>
+
+        <div class="footer">
+            <p>PS: This is an automated email notification from the Sugmya Finance system. Please do not reply directly to this email.</p>
+        </div>
+
+        <div class="email-footer">
+            <p>© 2024 Sufinn Finance. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
