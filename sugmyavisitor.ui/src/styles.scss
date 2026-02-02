@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(../node_modules/remixicon/fonts/remixicon.css);
+// @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import"https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&amp;display=swap";
+@import"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap";
+@import"https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&amp;display=swap";
+@import"https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap";
+@import url(assets/css/main.css);
+
+
+.mat-dialog-container {
+    padding: 0px !important;
+}
+
+.cdk-overlay-dark-backdrop {
+    backdrop-filter: blur(3px);
+    background: rgba(24, 50, 71, .6) !important;
+    overflow: hidden;
+}
+
+.close-btn {
+    color: #fff !important;
+    font-size: 16px !important;
+}
+
+.close-btn:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}

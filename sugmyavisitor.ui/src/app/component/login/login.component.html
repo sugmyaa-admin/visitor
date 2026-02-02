@@ -1,0 +1,53 @@
+
+
+<div class="login-base">
+  <div class="login-inner">
+   
+    
+      <div class="company-logo">
+        <img src="assets/images/logo.png" alt="Gatezy - Powered by sugmya" />
+      </div>
+      <div class="title-area mt-1">
+          <h3>Welcome Back!</h3>
+          <p>Please enter your login details below to access your account.</p>
+        </div>
+      <div class="form-area">
+        <!-- Login Form -->
+        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- Email/Username Field -->
+          <div class="form-group">
+            <label class="form-label mb-1">Employee code</label>
+            <input type="number" class="login-form-control" formControlName="loginId" />
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group mt-4">
+            <div class="d-inline-flex w-100 justify-content-between mb-1">
+              <label class="form-label mb-0 w-auto">Password</label>
+              <!-- <span><a (click)="resetPassword()">Forgot password?</a></span> -->
+            </div>
+            <input type="password" class="login-form-control" formControlName="password" />
+          </div>
+
+          <!-- Remember Me Checkbox -->
+          <div class="custom-check form-group mt-3">
+            <input type="checkbox" class="form-check-input" formControlName="isRemember" id="isRemember"
+              (click)="toggleRememberMe()" />
+            <label class="form-check-label" for="isRemember">Remember me</label>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary w-100 btn-login">
+              <span class="sr-only">Login</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<div class="footer">
+  <span>Copyright © 2025 <a href="https://sugmya.com/" target="_blank"><b>Gatezy</b></a>. sugmya.com All Rights Reserved.</span>
+</div>

@@ -1,0 +1,94 @@
+<div class="page-inner pt-3 pb-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="action">
+          <div class="date-range">
+            <label class="form-label">Date Range</label>
+            <div class="datepicker w-30">
+              <span><i class="ri-calendar-2-line"></i></span>
+              <input type="text" class="form-control" readonly name="startDate" [(ngModel)]="startDate" ngbDatepicker
+                (click)="datePickerStart.toggle()" placeholder="dd-MMM-yyyy" [navigation]="'arrows'"
+                [firstDayOfWeek]="7" #datePickerStart="ngbDatepicker" />
+            </div>
+            <label class="form-label seperator">-</label>
+            <div class="datepicker w-30">
+              <span><i class="ri-calendar-2-line"></i></span>
+              <input type="text" class="form-control" readonly name="endDate" [(ngModel)]="endDate" ngbDatepicker
+                (click)="datePickerEnd.toggle()" placeholder="dd-MMM-yyyy" [navigation]="'arrows'" [firstDayOfWeek]="7"
+                #datePickerEnd="ngbDatepicker" />
+            </div>
+          </div>
+          <div class="search-btn ms-3">
+            <button class="btn btn-primary p-0 ps-2 pe-2" spin (click)="getVisitors()">
+              <i class="ri-search-2-line"></i>
+            </button>
+          </div>
+          <div class="download-btn ms-3">
+            <button class="btn btn-default p-0 ps-2 pe-2" (click)="downloadCSV()">
+              <i class="ri-download-2-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div *ngIf="!isLoading">
+          <table id="dataGrid" class="my-table w-100">
+            <thead>
+              <tr>
+
+                <th>S.no</th>
+                <th>Name</th>
+                <th>Checked-in</th>
+                <th>Checked-out</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Whom to meet</th>
+                <th data-orderable="false"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of  filteredData; let i = index">
+                <!-- <td class="isCheckBox">
+                    <div class="custom-check">
+                      <input type="checkbox" (change)="change($event)" class="form-check-input" [(ngModel)]="item.checked"
+                        name="checkbox{{ i }}" id="checkbox{{ i }}">
+                      <label class="form-check-label" for="checkbox{{ i }}"></label>
+                    </div>
+                  </td> -->
+                <td>{{i+1}}</td>
+                <td>
+
+                  <div class="nameColumn">
+                    <div class="image-base">
+                      <img src="{{ item.picture }}" (click)="openImageDialog(item.picture)" alt="{{ item.name }}" />
+                    </div>
+                    <span>{{ item.name }}</span>
+                  </div>
+                </td>
+                <td>{{ item.checkIn }}</td>
+                <td>{{ item.checkOut }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.number }}</td>
+                <td>{{ item.whomToMeet }}</td>
+                <td>
+                  <button *ngIf="!item.checkOut" class="btn btn-danger btn-sm ps-2 pe-2 lh-1"
+                    (click)="forceCheckout(item.txnId, item.number)">
+                    Force check out
+                  </button>
+                </td>
+
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

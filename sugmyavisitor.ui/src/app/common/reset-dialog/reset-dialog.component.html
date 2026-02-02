@@ -1,0 +1,60 @@
+<!-- <div class="container1">
+    <div class="header">
+        <label class="form-label mb-0">Reset password</label>
+        <i class="ri-close-large-fill " (click)="onClose()"></i>
+    </div>
+
+
+    
+        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+                <label class="form-label mb-1">Old Password</label>
+                <input type="text" class="login-form-control" formControlName="oldPassword" />
+              </div>
+    
+             
+              <div class="form-group mt-4">
+                
+                  <label class="form-label mb-0 w-auto">New Password</label>
+                
+                <input type="password" class="login-form-control" formControlName="newPassword" />
+              </div>
+              <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary w-100 btn-login" [disabled]="loginForm.invalid">
+                  <span class="sr-only">Confirm Password</span>
+                </button>
+              </div>
+        </form>
+    
+
+</div> -->
+  
+    <!-- Header with full-width using mat-toolbar -->
+    <mat-toolbar class="header" color="primary">
+      <span>Reset Password</span>
+      <span class="spacer"></span>
+      <i class="ri-close-large-fill" (click)="onClose()"></i>
+    </mat-toolbar>
+  
+    <!-- Form content -->
+    <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+        <div class="form-group">
+            <label class="form-label mb-1">Old Password</label>
+            <input type="password" class="form-control" formControlName="oldPassword" />
+          </div>
+
+         
+          <div class="form-group mt-4">
+            
+              <label class="form-label mb-1 w-auto">New Password</label>
+            
+            <input type="password" class="form-control" formControlName="password" />
+          </div>
+          <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary w-100 btn-login" [disabled]="loginForm.invalid">
+              <span class="sr-only">Confirm Password</span>
+            </button>
+          </div>
+    </form>
+
+  

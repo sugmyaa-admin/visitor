@@ -1,0 +1,16 @@
+
+  <div class="loading-wrapper" *ngIf="response === true">
+    <div class="loading-content">
+      <img src="../../../assets/images/loading.gif" alt="Loading...">
+      <span class="load">LOADING PLEASE WAIT...</span>
+    </div>
+  </div>
+  
+  <!-- Show image when the loading is done -->
+  <div class="loading-wrapper1" *ngIf="response === false">
+    <div class="loading-content">
+    <img src="../../../assets/images/tic2.gif" alt="Success!" class="success-img">
+    <span class="mt-2">Response Successful</span>
+
+  </div>
+  

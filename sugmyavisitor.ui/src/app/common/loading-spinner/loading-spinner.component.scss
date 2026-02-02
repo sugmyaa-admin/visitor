@@ -1,0 +1,18 @@
+.spinner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    z-index: 9999;
+}
+
+.spinner-border {
+    color: var(--text-subtle-color);
+    border-width: 2px;
+}

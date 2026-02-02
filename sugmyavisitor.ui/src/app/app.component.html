@@ -1,0 +1,29 @@
+<div *ngIf="!isMultiTenant">
+    <app-loading></app-loading>
+    <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="isTenantValid && !isLoading && isMultiTenant">
+    <app-loading></app-loading>
+    <router-outlet></router-outlet>
+</div>
+<div class="loading-base" *ngIf="isLoading && isMultiTenant">
+    <app-loading-spinner></app-loading-spinner>
+    <h6>Please wait...</h6>
+    <small>While we are loading your portal</small>
+</div>
+<div *ngIf="!isTenantValid && !isLoading && isMultiTenant">
+    <div class="no-tenant-base">
+        <div class="no-tenant">
+            <h4>Requested site in not available</h4>
+            <span>Please check the below reasons!</span>
+            <span>Please check if there are any spelling mistakes in the url</span>
+            <span>(normally it will XXX.sugmya.com/visitor where XXX will be your company name)</span>
+            <span>If www is used in the url, please remove and try</span>
+            <span>You can also check your mailbox for Welcome mail send from the system with the URL details in
+                it.</span>
+            <span>Still if you are unable to find the url please contact your HR Manager or the Admin.</span>
+        </div>
+    </div>
+
+</div>

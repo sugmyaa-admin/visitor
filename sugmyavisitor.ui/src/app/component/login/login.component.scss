@@ -1,0 +1,96 @@
+.login-base {
+    display: inline-flex;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../assets/images/form-full-bg-sales.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-inner {
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.company-logo {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.company-logo>img {
+    height: 100%;
+}
+
+.title-area {
+    text-align: center;
+}
+
+.title-area>h3 {
+    font-weight: 700;
+}
+
+.signup-link {
+
+    font-weight: 300;
+}
+
+.signup-link>a {
+    font-weight: 400;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.footer span {
+    color: var(--body-font-color);
+}
+
+.support {
+    font-size: 16px;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 100; 
+  }
+  
+  .loading-spinner img {
+    width: 100px; 
+    height: 100px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); 
+    border-radius: 8px;
+    background-color: white; 
+    padding: 10px; 
+  }
+  /* Hide the arrow buttons for number inputs in Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the arrow buttons in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+  

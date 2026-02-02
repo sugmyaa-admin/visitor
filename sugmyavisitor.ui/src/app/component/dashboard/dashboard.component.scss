@@ -1,0 +1,40 @@
+.action {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.date-range {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.image-base {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.image-base>img {
+    height: 100%;
+    width: 100%;
+}
+
+.nameColumn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check {
+    margin: 2px;
+}
+
+.w-30 {
+    width: 30%;
+}

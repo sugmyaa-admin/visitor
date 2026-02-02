@@ -1,0 +1,45 @@
+<div class="page-layout">
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="left col-md-8 d-flex">
+                    <div class="logo">
+                        <img src="assets/images/logo-white.png" alt="Gatezy - Powered by sugmya" />
+                    </div>
+                    <!-- <div class="version">Welcome to Gatezy - Powered by sugmya</div> -->
+                    <!-- <div class="search-bar">
+                        <input type="text" class="form-control" placeholder="Type here to search..." />
+                    </div> -->
+                    <!-- <div class="h-seperator"></div> -->
+                </div>
+                <div class="right col-md-4">
+                    <p class="version v2">App version {{appVersion}}</p>
+                   <span class="userName" id="userName" spin >{{initials}}
+                        <div class="user-menu arrow arrow-top">
+                            <div class="user-details">
+                                <div class="user-icon">{{initials}}</div>
+                                <div class="user-info">
+                                    <!-- <span>Vishal Singh</span> -->
+                                    <span>{{personName|uppercase}}</span>
+                                    <!-- <span>vishal.singh@sufinn.com</span> -->
+                                     <span>{{personEmail}}</span>
+                                </div>
+                            </div>
+                            <div class="user-menu-list">
+                                <a href="javascript:void(0)" (click)="openResetDialog()" ><i class="ri-lock-password-line me-2"></i> Reset
+                                    Password</a>
+                                    
+                                <a href="javascript:void(0)" (click)="navigateToResetPassword()"><i class="ri-logout-box-line me-2"></i>
+                                    Logout</a>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

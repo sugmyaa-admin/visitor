@@ -1,0 +1,47 @@
+
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height for loading screen */
+    position: fixed; /* Ensure it stays on top */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    z-index: 9999; /* Ensure it's above other content */
+  }
+  .loading-wrapper1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height for loading screen */
+    position: fixed; /* Ensure it stays on top */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    z-index: 999; /* Ensure it's above other content */
+  }
+  .loading-content {
+    display: flex;
+    flex-direction: column; /* Stack the image and text vertically */
+    align-items: center;
+    text-align: center;
+  }
+  
+  .loading-wrapper img {
+    width: 60px; /* Size of the loading spinner */
+  }
+  .loading-wrapper1 img {
+    width: 260px; 
+  }
+  .load {
+    margin-top: 10px; /* Space between the image and the loading text */
+    font-size: 14px; /* Adjust the font size */
+    color: #333; /* Text color */
+  }
+  .loading-wrapper .success-img {
+    width: 420px; /* Increase the size of the tick mark */
+  }
