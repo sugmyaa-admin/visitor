@@ -149,7 +149,7 @@ namespace Sufinn.Visitor
             using (var scope = serviceProvider.CreateScope())
             {
                 var jobRepository = scope.ServiceProvider.GetRequiredService<AutoCheckoutService>();
-                RecurringJob.AddOrUpdate<AutoCheckoutService>("auto-cheked-out-job", job => job.AutoCheckout(), Configuration.GetSection("AutoCheckoutJobTime").Value, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
+                RecurringJob.AddOrUpdate<AutoCheckoutService>("auto-cheked-out-job", job => job.AutoCheckout(), Configuration.GetSection("AutoCheckoutJobTime").Value, TimeZoneInfo.FindSystemTimeZoneById("Asia/Kolkata"));
             }
 
             app.UseSwagger();
