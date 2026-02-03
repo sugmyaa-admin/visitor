@@ -19,6 +19,7 @@ using Sufinn.Visitor.Repository.Interface;
 using Sufinn.Visitor.Services;
 using Sufinn.Visitor.Services.Interface;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace Sufinn.Visitor
@@ -31,6 +32,19 @@ namespace Sufinn.Visitor
         }
 
         public IConfiguration Configuration { get; }
+
+        private static TimeZoneInfo GetIndiaTimeZone()
+        {
+            var timeZones = TimeZoneInfo.GetSystemTimeZones();
+
+            if (timeZones.Any(tz => tz.Id == "Asia/Kolkata"))
+                return TimeZoneInfo.FindSystemTimeZoneById("Asia/Kolkata");
+
+            if (timeZones.Any(tz => tz.Id == "India Standard Time"))
+                return TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+
+            return TimeZoneInfo.Utc;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -149,7 +163,9 @@ namespace Sufinn.Visitor
             using (var scope = serviceProvider.CreateScope())
             {
                 var jobRepository = scope.ServiceProvider.GetRequiredService<AutoCheckoutService>();
-                RecurringJob.AddOrUpdate<AutoCheckoutService>("auto-cheked-out-job", job => job.AutoCheckout(), Configuration.GetSection("AutoCheckoutJobTime").Value, TimeZoneInfo.FindSystemTimeZoneById("Asia/Kolkata"));
+                RecurringJob.AddOrUpdate<AutoCheckoutService>(
+    "auto-cheked-out-job",job => job.AutoCheckout(),Configuration.GetSection("AutoCheckoutJobTime").Value,GetIndiaTimeZone()
+);
             }
 
             app.UseSwagger();
