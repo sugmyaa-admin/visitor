@@ -17,27 +17,27 @@ export class AppComponent implements OnInit {
   constructor(private _tenant: TenantService, private _auth: AuthService) {
     this.tenant = this._tenant.getTenant();
   }
-  // ngOnInit(): void {
-  //   if (!this.isMultiTenant) {
-  //     this.isTenantValid = true;
-  //     this.isLoading = false;
-  //     return;
-  //   }
-
-  //   setTimeout(() => {
-  //     this.validateTenant();
-  //   }, 2000);
-  // }
-
   ngOnInit(): void {
+    if (!this.isMultiTenant) {
+      this.isTenantValid = true;
+      this.isLoading = false;
+      return;
+    }
 
-  // FORCE BYPASS FOR DOCKER TESTING
-  this.isMultiTenant = false;
-  this.isTenantValid = true;
-  this.isLoading = false;
+    setTimeout(() => {
+      this.validateTenant();
+    }, 2000);
+  }
 
-  return;
-}
+//   ngOnInit(): void {
+
+//   // FORCE BYPASS FOR DOCKER TESTING
+//   this.isMultiTenant = false;
+//   this.isTenantValid = true;
+//   this.isLoading = false;
+
+//   return;
+// }
 
   validateTenant() {
     this._auth.validatedTenant(this.tenant).subscribe(res => {
