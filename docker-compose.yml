@@ -7,7 +7,7 @@ services:
 
   # ---------------- BACKEND (.NET) ----------------
   backend:
-    image: acavinash/visitor-backend:latest
+    image: 908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-backend
     container_name: visitor-backend
     restart: unless-stopped
     environment:
@@ -20,7 +20,7 @@ services:
 
   # ---------------- FRONTEND (Nginx + Angular) ----------------
   frontend:
-    image: acavinash/visitor-frontend:latest
+    image: 908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-frontend
     container_name: visitor-frontend
     restart: unless-stopped
     ports:
