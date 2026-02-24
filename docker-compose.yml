@@ -1,0 +1,31 @@
+
+networks:
+  visitor-network:
+    driver: bridge
+
+services:
+
+  # ---------------- BACKEND (.NET) ----------------
+  backend:
+    image: acavinash/visitor-backend:latest
+    container_name: visitor-backend
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    expose:
+      - "8080"
+    networks:
+      - visitor-network
+
+  # ---------------- FRONTEND (Nginx + Angular) ----------------
+  frontend:
+    image: acavinash/visitor-frontend:latest
+    container_name: visitor-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - visitor-network
