@@ -1,63 +1,50 @@
-version: '3.8'
+events {}
 
-networks:
-  visitor-network:
-    driver: bridge
+http {
 
-services:
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript;
+    client_max_body_size 50M;
 
-  backend:
-    build: ./backend
-    container_name: visitor-backend
-    restart: always
-    networks:
-      - visitor-network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
+    # ================= HTTP =================
+    server {
+        listen 80;
+        server_name sugmyatech.com www.sugmyatech.com;
 
-  frontend-build:
-    build: ./frontend
-    container_name: visitor-frontend-build
-    volumes:
-      - ./frontend-dist:/app/dist
-    command: cp -r /app/dist/* /app/dist/
-    networks:
-      - visitor-network
+        location /.well-known/acme-challenge/ {
+            root /var/www/certbot;
+        }
 
-  nginx:
-    image: nginx:alpine
-    container_name: visitor-nginx
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./frontend-dist:/usr/share/nginx/html
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    depends_on:
-      - backend
-    networks:
-      - visitor-network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
+        location / {
+            return 301 https://$host$request_uri;
+        }
+    }
 
-  certbot:
-    image: certbot/certbot
-    container_name: visitor-certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    entrypoint: >
-      sh -c "trap exit TERM; while :; do
-      certbot renew;
-      sleep 12h & wait $${!};
-      done"
+    # ================= HTTPS =================
+    server {
+        listen 443 ssl;
+        server_name sugmyatech.com www.sugmyatech.com;
+
+        ssl_certificate /etc/letsencrypt/live/sugmyatech.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/sugmyatech.com/privkey.pem;
+
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_prefer_server_ciphers on;
+
+        # Frontend
+        location / {
+            root /usr/share/nginx/html;
+            try_files $uri $uri/ /index.html;
+        }
+
+        # Backend API
+        location /visitor-api/ {
+            proxy_pass http://backend:8080/;
+            proxy_http_version 1.1;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Connection "";
+        }
+    }
+}
 
