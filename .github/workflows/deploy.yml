@@ -10,40 +10,51 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      # -------------------- Checkout Code --------------------
+    
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # -------------------- Setup AWS Credentials --------------------
+     
       - name: Configure AWS Credentials
         run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set region ap-south-1
 
-      # -------------------- Login to AWS ECR --------------------
+    
       - name: Login to AWS ECR
         run: |
           aws ecr get-login-password --region ap-south-1 | \
           docker login --username AWS --password-stdin 908103136691.dkr.ecr.ap-south-1.amazonaws.com
 
-      # -------------------- Build Image --------------------
-      - name: Build Docker Image
+      - name: Build Backend Image
+        working-directory: ./sugmyavisitor.api
         run: |
           docker build -t visitor-backend:latest .
 
-      # -------------------- Tag Image --------------------
-      - name: Tag Docker Image
+      - name: Tag Backend Image
         run: |
           docker tag visitor-backend:latest \
           908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-backend:latest
 
-      # -------------------- Push Image --------------------
-      - name: Push Image to ECR
+      - name: Push Backend Image
         run: |
           docker push 908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-backend:latest
 
-      # -------------------- Deploy --------------------
+      - name: Build Frontend Image
+        working-directory: ./sugmyavisitor.ui
+        run: |
+          docker build -t visitor-frontend:latest .
+
+      - name: Tag Frontend Image
+        run: |
+          docker tag visitor-frontend:latest \
+          908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-frontend:latest
+
+      - name: Push Frontend Image
+        run: |
+          docker push 908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-frontend:latest
+
       - name: Deploy Application
         run: |
           cd /home/ec2-user/visitor
