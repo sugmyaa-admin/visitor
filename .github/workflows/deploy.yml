@@ -1,1 +1,37 @@
+name: Build & Deploy
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Login to AWS ECR
+        run: |
+          aws ecr get-login-password --region ap-south-1 | \
+          docker login --username AWS --password-stdin 908103136691.dkr.ecr.ap-south-1.amazonaws.com
+
+      - name: Build Docker Image
+        run: |
+          docker build -t visitor-backend:latest .
+
+      - name: Tag Image
+        run: |
+          docker tag visitor-backend:latest 908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-backend:latest
+
+      - name: Push to ECR
+        run: |
+          docker push 908103136691.dkr.ecr.ap-south-1.amazonaws.com/visitor-backend:latest
+
+      - name: Deploy
+        run: |
+          cd /home/ec2-user/visitor
+          docker compose pull
+          docker compose up -d
