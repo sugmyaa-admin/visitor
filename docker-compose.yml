@@ -1,50 +1,60 @@
-events {}
 
-http {
 
-    gzip on;
-    gzip_types text/plain text/css application/json application/javascript;
-    client_max_body_size 50M;
+version: '3.8'
 
-    # ================= HTTP =================
-    server {
-        listen 80;
-        server_name sugmyatech.com www.sugmyatech.com;
+networks:
+  visitor-network:
+    driver: bridge
 
-        location /.well-known/acme-challenge/ {
-            root /var/www/certbot;
-        }
+services:
 
-        location / {
-            return 301 https://$host$request_uri;
-        }
-    }
+  backend:
+    build: ./sugmya-visitor.api
+    container_name: visitor-backend
+    restart: always
+    networks:
+      - visitor-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
 
-    # ================= HTTPS =================
-    server {
-        listen 443 ssl;
-        server_name sugmyatech.com www.sugmyatech.com;
+  nginx:
+    image: nginx:alpine
+    container_name: visitor-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
 
-        ssl_certificate /etc/letsencrypt/live/sugmyatech.com/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/sugmyatech.com/privkey.pem;
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./sugmya-visitor.ui/dist:/usr/share/nginx/html
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
 
-        ssl_protocols TLSv1.2 TLSv1.3;
-        ssl_prefer_server_ciphers on;
+    depends_on:
+      - backend
+    networks:
+      - visitor-network
 
-        # Frontend
-        location / {
-            root /usr/share/nginx/html;
-            try_files $uri $uri/ /index.html;
-        }
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
 
-        # Backend API
-        location /visitor-api/ {
-            proxy_pass http://backend:8080/;
-            proxy_http_version 1.1;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Connection "";
-        }
-    }
-}
+  certbot:
+    image: certbot/certbot
+    container_name: visitor-certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
 
+    entrypoint: >
+      sh -c "trap exit TERM; while :; do
+      certbot renew --webroot -w /var/www/certbot --quiet;
+      nginx -s reload;
+      sleep 12h & wait $${!};
+      done"
