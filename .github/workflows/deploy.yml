@@ -57,6 +57,9 @@ jobs:
 
       - name: Deploy Application
         run: |
+          whoami
+          pwd
+          ls -l /home/ec2-user
           cd /home/ec2-user/visitor
           docker compose pull
           docker compose up -d
