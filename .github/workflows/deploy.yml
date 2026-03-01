@@ -63,6 +63,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             whoami
+            ls -la
             cd /home/ec2-user/visitor
             docker compose pull
             docker compose up -d
