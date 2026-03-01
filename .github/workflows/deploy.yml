@@ -62,8 +62,13 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            whoami
-            ls -la
+            # Login to ECR
+            aws ecr get-login-password --region ap-south-1 | \
+            docker login --username AWS --password-stdin 908103136691.dkr.ecr.ap-south-1.amazonaws.com
+
             cd /home/ec2-user/visitor
+
             docker compose pull
+
+            # Restart containers
             docker compose up -d
